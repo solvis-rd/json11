@@ -55,6 +55,7 @@
 #include <map>
 #include <memory>
 #include <initializer_list>
+#include <list>
 
 #ifdef _MSC_VER
     #if _MSC_VER <= 1800 // VS 2013
@@ -203,6 +204,11 @@ public:
      */
     typedef std::initializer_list<std::pair<std::string, Type>> shape;
     bool has_shape(const shape & types, std::string & err) const;
+    /** get_key_list()
+     * Return a list with all keys on this JSON object. If the JSON is empty, a list 
+     * with size 0 will be returned
+     */
+    std::list<std::string> get_key_list() const;
 
 private:
     std::shared_ptr<JsonValue> m_ptr;

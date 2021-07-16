@@ -787,4 +787,17 @@ bool Json::has_shape(const shape & types, string & err) const {
     return true;
 }
 
+std::list<std::string> Json::get_key_list() const
+{
+    std::list<std::string> return_value;
+    const auto& obj_items = object_items();
+    if(obj_items.empty())   return return_value;
+
+    for(auto iter = obj_items.begin(); iter != obj_items.end(); iter++)
+    {
+        return_value.push_back(iter->first);
+    }
+    return return_value;
+}
+
 } // namespace json11
